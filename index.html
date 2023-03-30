@@ -47,8 +47,8 @@
       <div class="tasks bg-white border-light rounded-3 p-3 shadow-lg mb-3">
         <h2>Todo</h2>
         <ul v-if="tasks.length > 0">
-          <li v-for="(task, index) in tasks" class="d-flex">
-            {{task}} 
+          <li v-for="(task, index) in tasks" class="d-flex" :class="{'text-decoration-line-through': task.done}">
+            {{task.text}} 
             <div class="complete" @click="completeTask(index)">
               <i class="fas fa fa-check-circle fa-sm fa-fw"></i>
             </div>
@@ -61,7 +61,7 @@
         <h2>Completed Tasks</h2>
         <ul>
           <li v-for="task in completed">
-            {{task}}
+            {{task.text}}
           </li>
         </ul>
       </div>
