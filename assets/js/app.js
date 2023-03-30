@@ -14,3 +14,54 @@ oltre al click sul pulsante, intercettare anche il tasto ENTER per aggiungere il
 cliccando sul testo dell'item, invertire il valore della proprietà done del todo corrispondente (se done era uguale a false, impostare true e viceversa)
 
 */
+
+
+const {createApp} = Vue;
+createApp({
+  data() {
+    return {
+      newTask:'',
+      error: null,
+      completed: [],
+      tasks: [
+        {
+          text:'Learn HTML',
+          done: true,
+        },
+           {
+          text:'Learn CSS',
+          done: false,
+        },
+        {
+          text:'Learn JS',
+          done: false,
+        },
+        {
+          text:'Learn PHP',
+          done: true,
+        },
+      ]
+    }
+    
+  },
+  methods: {
+    addTasks(){
+
+      if (this.newTask.length >= 5) { 
+        this.tasks.unshift(this.newTask)
+        this.newTask = '' 
+        this.error = null
+      } else {
+        this.error = 'La lunghezza della task deve essere almeno di 5 caratteri!'
+      }
+    },
+
+    completeTask(i){
+      /* pusho quelle eliminate in un array completato */
+      this.completed.push(this.tasks[i])
+      /* splice rimuove */
+      this.tasks.splice(i, 1)
+    }
+  }
+
+}).mount('#app')

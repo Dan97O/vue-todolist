@@ -20,9 +20,60 @@
   
 
 
-<div id="app">
-</div>
+  <div id="app">
+    <header>
+      <h1 class="text-center p-3">Todo list</h1>
+    </header>
 
+
+
+
+
+
+    <main class="container">
+      <div class="add_tasks mb-3">
+        <div class="d-flex mb-3">
+          <input type="text" v-model.trim="newTask" @keyup.enter="addTasks()">
+          <button @click="addTasks()">Add</button>
+        </div>
+      
+        <div class="alert alert-danger" role="alert" v-if="error">
+          <strong> {{error}} </strong>
+        </div>
+      </div>
+
+
+
+      <div class="tasks bg-white border-light rounded-3 p-3 shadow-lg mb-3">
+        <h2>Todo</h2>
+        <ul v-if="tasks.length > 0">
+          <li v-for="(task, index) in tasks" class="d-flex">
+            {{task}} 
+            <div class="complete" @click="completeTask(index)">
+              <i class="fas fa fa-check-circle fa-sm fa-fw"></i>
+            </div>
+          </li>
+        </ul>
+        <p v-else>Tutte le task fatte😎</p>
+      </div>     
+
+      <div class="completed" v-if="completed.length > 0">
+        <h2>Completed Tasks</h2>
+        <ul>
+          <li v-for="task in completed">
+            {{task}}
+          </li>
+        </ul>
+      </div>
+
+
+    </main>
+
+
+
+
+    <footer></footer>
+  </div>
 
 
 
