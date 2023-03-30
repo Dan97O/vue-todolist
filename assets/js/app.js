@@ -26,7 +26,7 @@ createApp({
       tasks: [
         {
           text:'Learn HTML',
-          done: true,
+          done: false,
         },
            {
           text:'Learn CSS',
@@ -38,7 +38,7 @@ createApp({
         },
         {
           text:'Learn PHP',
-          done: true,
+          done: false,
         },
       ]
     }
@@ -48,7 +48,7 @@ createApp({
     addTasks(){
 
       if (this.newTask.length >= 5) { 
-        this.tasks.unshift(this.newTask)
+        this.tasks.unshift({text: this.newTask, done: false});
         this.newTask = '' 
         this.error = null
       } else {
