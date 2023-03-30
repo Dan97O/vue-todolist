@@ -16,47 +16,47 @@ cliccando sul testo dell'item, invertire il valore della proprietà done del tod
 */
 
 
-const {createApp} = Vue;
+const { createApp } = Vue;
 createApp({
   data() {
     return {
-      newTask:'',
+      newTask: '',
       error: null,
       completed: [],
       tasks: [
         {
-          text:'Learn HTML',
-          done: false,
-        },
-           {
-          text:'Learn CSS',
+          text: 'Learn HTML',
           done: false,
         },
         {
-          text:'Learn JS',
+          text: 'Learn CSS',
           done: false,
         },
         {
-          text:'Learn PHP',
+          text: 'Learn JS',
+          done: false,
+        },
+        {
+          text: 'Learn PHP',
           done: false,
         },
       ]
     }
-    
+
   },
   methods: {
-    addTasks(){
+    addTasks() {
 
-      if (this.newTask.length >= 5) { 
-        this.tasks.unshift({text: this.newTask, done: false});
-        this.newTask = '' 
+      if (this.newTask.length >= 5) {
+        this.tasks.unshift({ text: this.newTask, done: false });
+        this.newTask = ''
         this.error = null
       } else {
         this.error = 'La lunghezza della task deve essere almeno di 5 caratteri!'
       }
     },
 
-    completeTask(i){
+    completeTask(i) {
       /* pusho quelle eliminate in un array completato */
       this.completed.push(this.tasks[i])
       /* splice rimuove */
